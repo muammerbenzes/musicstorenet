@@ -13,10 +13,12 @@ namespace MusicStore.Mocks.OpenIdConnect
             var response = new HttpResponseMessage();
 
             var basePath = Path.GetFullPath(Path.Combine(
-#if NET451
+#if NET46
                 AppDomain.CurrentDomain.BaseDirectory,
-#else
+#elif NETCOREAPP2_0
                 AppContext.BaseDirectory,
+#else
+#error Targe framewok needs to be updated
 #endif
                 "ForTesting", "Mocks", "OpenIdConnect"));
 
